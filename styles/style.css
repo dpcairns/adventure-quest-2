@@ -78,6 +78,10 @@ header img {
     height: var(--header-height);
 }
 
+label {
+    display: block;
+}
+
 
 
 content {

@@ -51,11 +51,10 @@ form.addEventListener('submit', (e) => {
     const choice = findById(quest.choices, selectionId);
     const user = JSON.parse(localStorage.getItem('USER'));
 
-    console.log('=============================\n');
-    console.log('|| choice', choice);
-    console.log('\n=============================');
     user.hp += choice.hp;
     user.gold += choice.gold;
+    // use the selectionId to set the property dynamically
+    user.completed[questId] = true;
 
     //     - Put the new stats in local storage
     localStorage.setItem('USER', JSON.stringify(user));

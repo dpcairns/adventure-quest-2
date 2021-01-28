@@ -4,6 +4,8 @@ const h1 = document.querySelector('h1');
 const p = document.querySelector('p');
 const img = document.querySelector('section img');
 const form = document.querySelector('form');
+const resultsSpan = document.querySelector('#results-span');
+const backToMap = document.querySelector('#back-to-map');
 
 // - Grab the id of the quest from the URL
 const params = new URLSearchParams(window.location.search);
@@ -54,11 +56,13 @@ form.addEventListener('submit', (e) => {
     user.hp += choice.hp;
     user.gold += choice.gold;
     // use the selectionId to set the property dynamically
+    resultsSpan.textContent = choice.result;
     user.completed[questId] = true;
 
     //     - Put the new stats in local storage
     localStorage.setItem('USER', JSON.stringify(user));
-    //     - Send user back to map
-    window.location = '../map';
 });
 
+backToMap.addEventListener('click', () => {
+    window.location = '../map';
+});
